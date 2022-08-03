@@ -10,6 +10,15 @@ let package = Package(
         .library(
             name: "DetaKit",
             targets: ["DetaKit"]),
+        .library(
+            name: "DetaModels",
+            targets: ["DetaModels"]),
+        .library(
+            name: "DetaNetwork",
+            targets: ["DetaNetwork"]),
+        .library(
+            name: "DetaUtils",
+            targets: ["DetaUtils"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -20,7 +29,23 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DetaKit",
+            dependencies: [
+                "DetaModels",
+                "DetaNetwork",
+                "DetaUtils"
+            ]),
+        .target(
+            name: "DetaModels",
             dependencies: []),
+        .target(
+            name: "DetaNetwork",
+            dependencies: []),
+        .target(
+            name: "DetaUtils",
+            dependencies: []),
+        .executableTarget(
+            name: "Run",
+            dependencies: ["DetaKit"]),
         .testTarget(
             name: "DetaKitTests",
             dependencies: ["DetaKit"]),
